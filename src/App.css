@@ -1,38 +1,64 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+body{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.MineField {
+  display: block;
+  padding: 10px;
+  position: relative;
+  width: 680px;
+  height: 680px;
+  border: solid 2px #adadad;
+  border-radius: 5px;
+  background-color: gray;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Cell {
+  display: block;
+  position: absolute;
+  background-color: antiquewhite;
+  color: red;
+  border-radius: 5px;
+  border: solid 2px gray;
+  font-family: 'Orbitron', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Control {
+  position: relative;
+  margin: left;
+  display: block;
+  padding: 10px;
+  width: 680px;
+  height: 20px;
+  border-radius: 5px;
+  border: solid 2px gray;
+  background-color: #474747;
+  font-family: 'Orbitron', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.flag {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 35px;
+  height: 35px;
+}
+.question {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 35px;
+  height: 35px;
+}
+.bomb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 35px;
+  height: 35px;
 }
