@@ -7,11 +7,11 @@ class ControlPanel extends React.Component {
     const { flagCnt, seconds, isGameWon, resetGame } = this.props;
     let smileyImg = null;
     if (isGameWon === null) {
-      smileyImg = smiley; // изображение смайлика по умолчанию
+      smileyImg = smiley; 
     } else if (isGameWon) {
-      smileyImg = coolSmile; // изображение смайлика при победе
+      smileyImg = coolSmile; 
     } else {
-      smileyImg = deadSmile; // изображение смайлика при проигрыше
+      smileyImg = deadSmile;
     }
 
     return (

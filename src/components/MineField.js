@@ -3,25 +3,25 @@ import React from 'react';
 import Cell from './Cell';
 
 class MineField extends React.Component {
+  
   constructor(props) {
   super(props);
   this.state = {
   field: this.createMap(this.props.rows, this.props.cols, this.props.mines),
   gameState: 'waiting',
-  timeElapsed: 0 // добавляем переменную для хранения счетчика времени
+  timeElapsed: 0 
   }
-  this.intervalId = null; // добавляем переменную для хранения идентификатора интервала
+  this.intervalId = null; 
   }
   
   resetGame = () => {
   const { rows, cols, mines } = this.props;
-  clearInterval(this.intervalId); // очищаем интервал
+  clearInterval(this.intervalId); 
   this.closedCells = rows * cols - mines;
   this.flagCount = 0;
   this.setState({
   field: this.createMap(rows, cols, mines),
   gameState: 'waiting',
-  timeElapsed: 0, // сбрасываем счетчик времени
   });
   };
   

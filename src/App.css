@@ -13,6 +13,9 @@
   background-color: gray;
 }
 
+
+
+
 .Cell {
   display: block;
   position: absolute;
@@ -32,15 +35,26 @@
   height: 40px;
   border-radius: 5px;
   border: solid 2px gray;
-  background-color: #474747;
+  background-color: #616161;
   font-size: 32px;
   font-family: 'Orbitron', sans-serif;
+}
+.time{
+  color: red;
+  height: 40px;
+  width: 75px;
+}
+.flags{
+  color: red;
+  height: 40px;
+  width: 75px;
 }
 
 .Control{
   display: flex;
   flex-direction: block;
   justify-content: space-between;
+  
 }
 
 .flag {
