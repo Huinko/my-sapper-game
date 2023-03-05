@@ -1,17 +1,31 @@
+import React from 'react';
+import smiley from '../img/finy-smile.PNG';
+import coolSmile from '../img/coolSmile.PNG';
+import deadSmile from '../img/deadSmile.PNG';
+class ControlPanel extends React.Component {
+  render() {
+    const { flagCnt, seconds, isGameWon, resetGame } = this.props;
+    let smileyImg = null;
+    if (isGameWon === null) {
+      smileyImg = smiley; // изображение смайлика по умолчанию
+    } else if (isGameWon) {
+      smileyImg = coolSmile; // изображение смайлика при победе
+    } else {
+      smileyImg = deadSmile; // изображение смайлика при проигрыше
+    }
 
-const zeroPad = (num, places) => String(num).padStart(places, '0');
-
-const controlPanel = (props) => {
-  const min = Math.floor(props.seconds / 60);
-  const secs = props.seconds % 60;
-
-  return (
-    <div className='Control'
-    style={{color: '#adadad'}}
-    >
-    Flag count:{zeroPad(props.flagCnt)}  Time:{zeroPad(min, 2)}:{zeroPad(secs, 2)}
-    </div>
-  );
+    return (
+      <div className='Control' style={{color:'white'}}>
+        <div className='flags'>{flagCnt}</div>
+        <div className='Smiley' onClick={resetGame}>
+          <img src={smileyImg} alt='smiley' />
+        </div>
+        <div className='time'>{seconds}</div>
+      </div>
+    );
+  }
 }
 
-export default controlPanel;
+export default ControlPanel;
+
+

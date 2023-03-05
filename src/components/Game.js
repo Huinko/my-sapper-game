@@ -6,8 +6,12 @@ class Game extends React.Component {
   state = {
     flagCnt: 0,
     seconds: 0,
+    isGameWon: null, // добавляем состояние игры
   };
 
+  resetGame = () => {
+    this.mineField.resetGame();
+  };
   start = () => {
     this.timerID = setInterval(() => this.tick(), 1000);
   }
@@ -25,10 +29,13 @@ class Game extends React.Component {
     this.start();
   }
 
+
   stopGame = (isGameWon) => {
     if (isGameWon) {
+      this.setState({ isGameWon: true });
       alert("You win");
     } else {
+      this.setState({ isGameWon: false });
       alert("You lose");
     }
     this.stop();
@@ -40,13 +47,14 @@ class Game extends React.Component {
     this.setState({flagCnt: oldflagCnt});
   }
 
-
-  render () {
+render () {
     return (
       <div className='Game'>
         <ControlPanel 
           flagCnt={this.state.flagCnt} 
           seconds={this.state.seconds}
+          isGameWon={this.state.isGameWon} // передаем состояние игры
+          resetGame={this.resetGame} 
         />
         <MineField
           rows='16'
@@ -55,10 +63,15 @@ class Game extends React.Component {
           gameStarted={this.startGame}
           gameOver={this.stopGame}
           changeFlagCount={this.setFlag}
+          ref={(mf) => (this.mineField = mf)}
         />
       </div>
     );
   }
 }
-
 export default Game;
+
+
+
+
+

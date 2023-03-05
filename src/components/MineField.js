@@ -4,15 +4,31 @@ import Cell from './Cell';
 
 class MineField extends React.Component {
   constructor(props) {
-    super(props);
-    this.closedCells = props.rows * props.cols - props.mines;
-    this.flagCount = 0;
-    this.state = {
-      field: this.createMap(this.props.rows, this.props.cols, this.props.mines),
-      gameState: 'waiting',
-    }
+  super(props);
+  this.state = {
+  field: this.createMap(this.props.rows, this.props.cols, this.props.mines),
+  gameState: 'waiting',
+  timeElapsed: 0 // добавляем переменную для хранения счетчика времени
   }
+  this.intervalId = null; // добавляем переменную для хранения идентификатора интервала
+  }
+  
+  resetGame = () => {
+  const { rows, cols, mines } = this.props;
+  clearInterval(this.intervalId); // очищаем интервал
+  this.closedCells = rows * cols - mines;
+  this.flagCount = 0;
+  this.setState({
+  field: this.createMap(rows, cols, mines),
+  gameState: 'waiting',
+  timeElapsed: 0, // сбрасываем счетчик времени
+  });
+  };
+  
 
+  
+  
+  
   openCell = (field, row, col) => {
     if (!field[row][col].opened && !field[row][col].checked) {
       if (field[row][col].hasBomb) {
